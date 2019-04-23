@@ -33,7 +33,7 @@ class RegisterController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return new RedirectResponse($router->generate('micro_post_index'));
+            return $this->redirect($router->generate('micro_post_index'));
         }
 
         return $this->render('register/register.html.twig', [

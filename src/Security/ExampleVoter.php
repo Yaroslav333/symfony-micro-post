@@ -26,9 +26,9 @@ class ExampleVoter implements VoterInterface
         $userRoles = $token->getRoles();
         foreach ($userRoles as $role) {
             if (in_array($role->getRole(), $attributes)) {
-                return true;
+                return self::ACCESS_GRANTED;
             }
         }
-        return false;
+        return self::ACCESS_DENIED;
     }
 }

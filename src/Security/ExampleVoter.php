@@ -23,6 +23,12 @@ class ExampleVoter implements VoterInterface
      */
     public function vote(TokenInterface $token, $subject, array $attributes)
     {
-        return 1;
+        $userRoles = $token->getRoles();
+        foreach ($userRoles as $role) {
+            if (in_array($role->getRole(), $attributes)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
